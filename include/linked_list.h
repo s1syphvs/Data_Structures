@@ -5,6 +5,10 @@
 
 #include "structures.h"
 
+/* ----- Node creation ----- */
+
+NODE *createNode(int data);
+
 /* ----- Add operations ----- */
 
 // At the beggining
