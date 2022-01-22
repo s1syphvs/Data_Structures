@@ -37,10 +37,14 @@ int addNodeStart(NODE **head, NODE **tail, int data){
         *tail = tempNode;
 
     }
-                   
-    tempNode->nextNode = *head;
-    (*head)->prevNode = tempNode;
-    *head = tempNode;
+
+    else{   // If the list isn't empty
+
+        tempNode->nextNode = *head;
+        (*head)->prevNode = tempNode;
+        *head = tempNode;
+
+    }
 
     if(*head == tempNode)   // Check for errors
         return(EXIT_SUCCESS);
