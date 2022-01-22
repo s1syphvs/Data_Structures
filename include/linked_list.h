@@ -37,7 +37,7 @@ int delNodeEnd(NODE **head, NODE **tail);
 int reverseNodes(NODE **head, NODE **tail);
 
 // Swap the position of two nodes
-int swapNodes(NODE **head, NODE **tail);
+int swapNodes(NODE **head, NODE **tail, int posNode1, int posNode2);
 
 // Create a circular list
 int circularNodes(NODE **head, NODE **tail);
