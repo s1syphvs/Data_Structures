@@ -157,3 +157,48 @@ int delNodeStart(NODE **head, NODE **tail){
     return(data);
 
 }
+
+// At a certain position
+int delNodeMid(NODE **head, NODE **tail, int position){
+
+    NODE *delNode = *head, *previous, *next;
+    int data;
+
+    if(position == 0) // If the position is 0
+        return(delNodeStart(head, tail));
+
+    else if(position > 0 && *head && *tail){     // If position in non-negative and the list isn't empty
+    
+        for(int i = 0; i < position; i++){
+        
+            delNode = delNode->nextNode;
+
+            if(!delNode)   // If the n'th element doesn't exist
+                return(ERROR);
+
+        }
+
+        previous = delNode->prevNode;
+        next = delNode->nextNode;
+
+        if(!next)  // If the last element will be erased
+            return(delNodeEnd(head, tail));
+
+        previous->nextNode = next;
+        next->prevNode = previous;
+
+    }
+
+    else    // The position is negative, or position is positive but list is empty
+        return(ERROR);
+
+    data = delNode->data;
+    
+    free(delNode);
+
+    if(previous->nextNode == next && next->prevNode == previous)    // Check for errors
+        return(data);
+    else
+        return(ERROR);
+
+}
