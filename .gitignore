@@ -4,6 +4,9 @@
 # Object files
 obj/*.o
 
+# Directories
+testing/
+
 # Executables
 core/main
 core/debug
