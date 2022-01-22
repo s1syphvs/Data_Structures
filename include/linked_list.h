@@ -31,4 +31,15 @@ int delNodeMid(NODE **head, NODE **tail, int position);
 // From the end
 int delNodeEnd(NODE **head, NODE **tail);
 
+/* ----- Miscellaneous operations ----- */
+
+// Reverse the order of the list
+int reverseNodes(NODE **head, NODE **tail);
+
+// Swap the position of two nodes
+int swapNodes(NODE **head, NODE **tail);
+
+// Create a circular list
+int circularNodes(NODE **head, NODE **tail);
+
 #endif
