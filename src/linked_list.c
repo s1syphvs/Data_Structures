@@ -225,3 +225,28 @@ int delNodeEnd(NODE **head, NODE **tail){
     return(data);
 
 }
+
+/* ----- Miscellaneous operations ----- */
+
+// Reverse the order of the list
+int reverseNodes(NODE **head, NODE **tail){
+
+    NODE *tempHead, *tempTail;
+    int data;
+
+    if(!*head || !*tail)    // If the list is empty
+        return(ERROR);
+
+    while(head && tail){    // Delete the last node from one list and add it to the second list,
+                            // until the list is empty
+        data = delNodeEnd(head, tail);
+        addNodeEnd(&tempHead, &tempTail, data);
+        
+    }
+
+    *head = tempHead;
+    *tail = tempTail;
+
+    return(SUCCESS);
+
+}
