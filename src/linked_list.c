@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include "../include/linked_list.h"
 
+#define SUCCESS -1
+#define ERROR -2
+
 /* ----- Node creation ----- */
 
 NODE *createNode(int data){
@@ -29,7 +32,7 @@ int addNodeStart(NODE **head, NODE **tail, int data){
     NODE *tempNode = createNode(data);
 
     if(!tempNode)
-        return(EXIT_FAILURE);
+        return(ERROR);
 
     if(*head == *tail && !*head){ // If the list is empty
         
@@ -47,9 +50,9 @@ int addNodeStart(NODE **head, NODE **tail, int data){
     }
 
     if(*head == tempNode)   // Check for errors
-        return(EXIT_SUCCESS);
+        return(SUCCESS);
     else
-        return(EXIT_FAILURE);
+        return(ERROR);
 
 }
 
@@ -59,7 +62,7 @@ int addNodeMid(NODE **head, NODE **tail, int data, int position){
     NODE *previous = *head, *next, *tempNode = createNode(data);
 
     if(!tempNode)
-        return(EXIT_FAILURE);
+        return(ERROR);
 
     if(position == 0) // If the position is 0
         return(addNodeStart(head, tail, data));
@@ -71,7 +74,7 @@ int addNodeMid(NODE **head, NODE **tail, int data, int position){
             previous = previous->nextNode;
 
             if(!previous)   // If the n'th element doesn't exist
-                return(EXIT_FAILURE);
+                return(ERROR);
 
         }
 
@@ -86,14 +89,14 @@ int addNodeMid(NODE **head, NODE **tail, int data, int position){
         next->prevNode = tempNode;
 
         if(previous->nextNode == tempNode && next->prevNode == tempNode)    // Check for errors
-            return(EXIT_SUCCESS);
+            return(SUCCESS);
         else
-            return(EXIT_FAILURE);
+            return(ERROR);
 
     }
 
     else    // The position is negative, or position is positive but list is empty
-        return(EXIT_FAILURE);
+        return(ERROR);
 
 }
 
@@ -103,7 +106,7 @@ int addNodeEnd(NODE **head, NODE **tail, int data){
     NODE *tempNode = createNode(data);
 
     if(!tempNode)
-        return(EXIT_FAILURE);
+        return(ERROR);
 
     if(*head == *tail && !*tail) // If the list is empty
         return(addNodeStart(head, tail, data));
@@ -117,9 +120,9 @@ int addNodeEnd(NODE **head, NODE **tail, int data){
     }
 
     if(*tail == tempNode)   // Check for errors
-        return(EXIT_SUCCESS);
+        return(SUCCESS);
     else
-        return(EXIT_FAILURE);
+        return(ERROR);
 
 }
 
@@ -134,7 +137,7 @@ int delNodeStart(NODE **head, NODE **tail){
     if(*head == *tail){     // If the list is empty or contains one element
         
         if(!*head)  // If the list is empty
-            return(EXIT_FAILURE);
+            return(ERROR);
 
         *head = NULL;
         *tail = NULL;
