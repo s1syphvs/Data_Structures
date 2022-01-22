@@ -53,6 +53,50 @@ int addNodeStart(NODE **head, NODE **tail, int data){
 
 }
 
+// At a certain position
+int addNodeMid(NODE **head, NODE **tail, int data, int position){
+
+    NODE *previous = *head, *next, *tempNode = createNode(data);
+
+    if(!tempNode)
+        return(EXIT_FAILURE);
+
+    if(position == 0) // If the position is 0
+        return(addNodeStart(head, tail, data));
+
+    else if(position > 0 && *head && *tail){     // If position in non-negative and the list isn't empty
+    
+        for(int i = 0; i < position - 1; i++){
+        
+            previous = previous->nextNode;
+
+            if(!previous)   // If the n'th element doesn't exist
+                return(EXIT_FAILURE);
+
+        }
+
+        next = previous->nextNode;
+
+        if(!next)  // If the element will be at the end
+            return(addNodeEnd(head, tail, data));
+
+        tempNode->nextNode = next;
+        tempNode->prevNode = previous;
+        previous->nextNode = tempNode;
+        next->prevNode = tempNode;
+
+        if(previous->nextNode == tempNode && next->prevNode == tempNode)    // Check for errors
+            return(EXIT_SUCCESS);
+        else
+            return(EXIT_FAILURE);
+
+    }
+
+    else    // The position was negative
+        return(EXIT_FAILURE);
+
+}
+
 // At the end
 int addNodeEnd(NODE **head, NODE **tail, int data){
 
