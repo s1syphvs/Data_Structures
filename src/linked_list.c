@@ -202,3 +202,26 @@ int delNodeMid(NODE **head, NODE **tail, int position){
         return(ERROR);
 
 }
+
+// From the end
+int delNodeEnd(NODE **head, NODE **tail){
+
+    NODE *delNode = *tail;
+    int data;
+
+    if(*head == *tail)     // If the list is empty or contains one element
+        return(delNodeStart(head, tail));
+
+    else{   // If the list contains at least two elements
+    
+        *tail = (*tail)->prevNode;
+        (*tail)->nextNode = NULL;
+
+    }
+
+    data = delNode->data;
+
+    free(delNode);
+    return(data);
+
+}
