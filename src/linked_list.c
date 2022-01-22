@@ -92,7 +92,7 @@ int addNodeMid(NODE **head, NODE **tail, int data, int position){
 
     }
 
-    else    // The position was negative
+    else    // The position is negative, or position is positive but list is empty
         return(EXIT_FAILURE);
 
 }
