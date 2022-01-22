@@ -48,3 +48,35 @@ int addNodeStart(NODE **head, NODE **tail, int data){
         return(EXIT_FAILURE);
 
 }
+
+// At the end
+int addNodeEnd(NODE **head, NODE **tail, int data){
+
+    NODE *tempNode = createNode(data);
+
+    if(!tempNode)
+        return(EXIT_FAILURE);
+
+    if(*head == *tail && !*tail){ // If the list is empty
+        
+        if(addNodeStart(head, tail, data) == EXIT_SUCCESS)
+            return(EXIT_SUCCESS);
+        else
+            return(EXIT_FAILURE);
+
+    }
+
+    else{   // If the list isn't empty
+                   
+        tempNode->prevNode = *tail;
+        (*tail)->nextNode = tempNode;
+        *tail = tempNode;
+
+    }
+
+    if(*tail == tempNode)   // Check for errors
+        return(EXIT_SUCCESS);
+    else
+        return(EXIT_FAILURE);
+
+}
