@@ -122,3 +122,35 @@ int addNodeEnd(NODE **head, NODE **tail, int data){
         return(EXIT_FAILURE);
 
 }
+
+/* ----- Delete operations ----- */
+
+// From the beggining
+int delNodeStart(NODE **head, NODE **tail){
+
+    NODE *delNode = *head;
+    int data;
+
+    if(*head == *tail){     // If the list is empty or contains one element
+        
+        if(!*head)  // If the list is empty
+            return(EXIT_FAILURE);
+
+        *head = NULL;
+        *tail = NULL;
+        
+    }
+
+    else{   // If the list contains at least two elements
+    
+        *head = (*head)->nextNode;
+        (*head)->prevNode = NULL;
+
+    }
+
+    data = delNode->data;
+
+    free(delNode);
+    return(data);
+
+}
