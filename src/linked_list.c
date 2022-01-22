@@ -250,3 +250,16 @@ int reverseNodes(NODE **head, NODE **tail){
     return(SUCCESS);
 
 }
+
+// Create a circular list
+int circularNodes(NODE **head, NODE **tail){
+
+    if(!*head || !*tail)    // If the list is empty
+        return(ERROR);
+
+    (*head)->prevNode = *tail;
+    (*tail)->nextNode = *head;
+
+    return(SUCCESS);
+
+}
