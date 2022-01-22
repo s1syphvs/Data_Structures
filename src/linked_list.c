@@ -88,14 +88,14 @@ int addNodeMid(NODE **head, NODE **tail, int data, int position){
         previous->nextNode = tempNode;
         next->prevNode = tempNode;
 
-        if(previous->nextNode == tempNode && next->prevNode == tempNode)    // Check for errors
-            return(SUCCESS);
-        else
-            return(ERROR);
-
     }
 
     else    // The position is negative, or position is positive but list is empty
+        return(ERROR);
+
+    if(previous->nextNode == tempNode && next->prevNode == tempNode)    // Check for errors
+        return(SUCCESS);
+    else
         return(ERROR);
 
 }
