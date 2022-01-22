@@ -105,14 +105,8 @@ int addNodeEnd(NODE **head, NODE **tail, int data){
     if(!tempNode)
         return(EXIT_FAILURE);
 
-    if(*head == *tail && !*tail){ // If the list is empty
-        
-        if(addNodeStart(head, tail, data) == EXIT_SUCCESS)
-            return(EXIT_SUCCESS);
-        else
-            return(EXIT_FAILURE);
-
-    }
+    if(*head == *tail && !*tail) // If the list is empty
+        return(addNodeStart(head, tail, data));
 
     else{   // If the list isn't empty
                    
